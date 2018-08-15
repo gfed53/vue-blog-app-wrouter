@@ -16,7 +16,7 @@ export default new Router({
             component: PostList
         },
         {
-            path: "/:id",
+            path: "/post/:id",
             name: "post-detail",
             component: PostDetail
         },

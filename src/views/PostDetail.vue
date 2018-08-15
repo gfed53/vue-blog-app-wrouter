@@ -10,7 +10,7 @@
         <h3>Comments:</h3>
         <ul>
             <li v-for="comment in comments" v-bind:key="comment.id">
-                {{comment.content}}
+                <p>{{comment.content}}</p> 
             </li>
         </ul>
     </div>
