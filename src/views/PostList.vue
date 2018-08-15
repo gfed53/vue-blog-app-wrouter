@@ -4,7 +4,6 @@
       <!-- Will loop thru Post components here -->
       <ul>
           <li v-for="post in posts" v-bind:key="post.id">
-              <!-- <Post v-bind:postData="post" /> -->
               <router-link :to="{ name: 'post-detail', params: { id: post.id }}">
                   {{post.title}}
               </router-link>
@@ -20,7 +19,7 @@ import Post from "@/components/Post.vue";
 const baseUrl = "http://localhost:8004/api/";
 
 export default {
-    name: "home",
+    name: "post-list",
     components: {
         Post
     },
