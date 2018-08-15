@@ -25,3 +25,11 @@ export default {
     }
 };
 </script>
+
+<style scoped lang="scss">
+.form-section {
+    label {
+        display: block;
+    }
+}
+</style>

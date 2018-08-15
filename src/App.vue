@@ -2,7 +2,6 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">All Posts</router-link> |
-      <!-- <router-link to="/create">Create New</router-link> -->
       <router-link :to="{ name: 'post-create' }">Create New</router-link>
     </div>
     <router-view/>
