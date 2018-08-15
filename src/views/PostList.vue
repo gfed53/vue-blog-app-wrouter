@@ -4,7 +4,10 @@
       <!-- Will loop thru Post components here -->
       <ul>
           <li v-for="post in posts" v-bind:key="post.id">
-              <Post v-bind:postData="post" />  
+              <!-- <Post v-bind:postData="post" /> -->
+              <router-link :to="{ name: 'post-detail', params: { id: post.id }}">
+                  {{post.title}}
+              </router-link>
           </li>
       </ul>
   </div>
