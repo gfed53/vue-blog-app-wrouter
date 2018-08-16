@@ -1,6 +1,7 @@
 <template>
     <div class="post-create">
-        <h2>Edit this post</h2>
+        <!-- <h2>Edit this post</h2> -->
+        <router-link :to="{ name: 'post-display', params: { id: post.id }}">Go Back</router-link>
         <PostForm v-bind:onSubmit="submit" v-bind:post="post"/>
     </div>
 </template>

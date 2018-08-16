@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import PostList from "./views/PostList.vue";
 import PostDetail from "./views/PostDetail.vue";
+import PostDisplay from "./views/PostDetail/PostDisplay.vue";
 import PostCreate from "./views/PostCreate.vue";
 import PostEdit from "./views/PostEdit.vue";
 
@@ -19,18 +20,30 @@ export default new Router({
         {
             path: "/view-post/:id",
             name: "post-detail",
-            component: PostDetail
+            component: PostDetail,
+            children: [
+                {
+                    path: "",
+                    name: "post-display",
+                    component: PostDisplay
+                },
+                {
+                    path: "edit",
+                    name: "post-edit",
+                    component: PostEdit
+                }
+            ]
         },
         {
             path: "/create-new",
             name: "post-create",
             component: PostCreate
-        },
-        {
-            path: "/edit/:id",
-            name: "post-edit",
-            component: PostEdit
         }
+        // {
+        //     path: "/edit/:id",
+        //     name: "post-edit",
+        //     component: PostEdit
+        // }
         // {
         //     path: "/about",
         //     name: "about",
