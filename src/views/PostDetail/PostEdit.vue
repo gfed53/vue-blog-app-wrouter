@@ -1,20 +1,20 @@
 <template>
     <div class="post-create">
         <router-link :to="{ name: 'post-display', params: { id: post.id }}">Go Back</router-link>
-        <PostForm v-bind:onSubmit="submit" v-bind:post="post"/>
+        <ContentForm v-bind:onSubmit="submit" v-bind:data="post"/>
     </div>
 </template>
 
 <script>
 import axios from "axios";
-import PostForm from "@/components/PostForm.vue";
+import ContentForm from "@/components/ContentForm.vue";
 
 const baseUrl = "http://localhost:8004/api/";
 
 export default {
     name: "post-edit",
     components: {
-        PostForm
+        ContentForm
     },
     data: function() {
         return {

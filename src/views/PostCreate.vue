@@ -1,20 +1,20 @@
 <template>
     <div class="post-create">
         <h2>Create a new post</h2>
-        <PostForm v-bind:onSubmit="submit" v-bind:post="post"/>
+        <ContentForm v-bind:onSubmit="submit" v-bind:data="post"/>
     </div>
 </template>
 
 <script>
 import axios from "axios";
-import PostForm from "../components/PostForm.vue";
+import ContentForm from "../components/ContentForm.vue";
 
 const baseUrl = "http://localhost:8004/api/";
 
 export default {
     name: "post-create",
     components: {
-        PostForm
+        ContentForm
     },
     data: function() {
         return {

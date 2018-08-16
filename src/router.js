@@ -6,6 +6,7 @@ import PostCreate from "./views/PostCreate.vue";
 import PostDetail from "./views/PostDetail.vue";
 import PostDisplay from "./views/PostDetail/PostDisplay.vue";
 import PostEdit from "./views/PostDetail/PostEdit.vue";
+import PostCommentCreate from "./views/PostDetail/PostCommentCreate.vue";
 
 Vue.use(Router);
 
@@ -19,7 +20,7 @@ export default new Router({
             component: PostList
         },
         {
-            path: "/view-post/:id",
+            path: "/post/:id",
             name: "post-detail",
             component: PostDetail,
             children: [
@@ -32,11 +33,16 @@ export default new Router({
                     path: "edit",
                     name: "post-edit",
                     component: PostEdit
+                },
+                {
+                    path: "add-comment",
+                    name: "post-comment-create",
+                    component: PostCommentCreate
                 }
             ]
         },
         {
-            path: "/create-new",
+            path: "/create",
             name: "post-create",
             component: PostCreate
         }
