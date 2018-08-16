@@ -1,19 +1,6 @@
 <template>
     <div class="post-detail">
-        <h2 class="post-header">{{ post.title }}</h2>
-        <!-- <router-link :to="{ name: 'post-edit', params: { id: post.id }}">Edit this post</router-link> -->
-        <!-- <div class="post-meta">
-            <p> <strong>Created:</strong> {{ dateCreated }}</p>
-            <p v-if="dateCreated !== dateUpdated"><strong>Last Updated:</strong> {{ dateUpdated }}</p>
-        </div>
-        <p>{{ post.content }}</p>
-
-        <h3>Comments:</h3>
-        <ul>
-            <li v-for="comment in comments" v-bind:key="comment.id">
-                <p>{{comment.content}}</p> 
-            </li>
-        </ul> -->
+        
         <router-view></router-view>
     </div>
 </template>
@@ -27,15 +14,14 @@ const baseUrl = "http://localhost:8004/api/";
 export default {
     name: "post-detail",
     components: {},
-    data: function() {
-        return {
-            post: {},
-            comments: []
-        };
-    },
+    // data: function() {
+    //     return {
+    //         post: {},
+    //         comments: []
+    //     };
+    // },
     mounted() {
-        this.getPost();
-        this.getPostComments();
+        // this.getPost();
     },
     methods: {
         getPost() {
@@ -49,28 +35,16 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
-        },
-        getPostComments() {
-            const id = this.$route.params.id;
-            axios
-                .get(baseUrl + id + `/comments/`)
-                .then(response => {
-                    this.comments = response.data;
-                    console.log("this.comments", this.comments);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }
-    },
-    computed: {
-        dateCreated: function() {
-            return moment(this.post.created_at).format("MM/DD/YYYY, h:mm:ss a");
-        },
-        dateUpdated: function() {
-            return moment(this.post.updated_at).format("MM/DD/YYYY, h:mm:ss a");
         }
     }
+    // computed: {
+    //     dateCreated: function() {
+    //         return moment(this.post.created_at).format("MM/DD/YYYY, h:mm:ss a");
+    //     },
+    //     dateUpdated: function() {
+    //         return moment(this.post.updated_at).format("MM/DD/YYYY, h:mm:ss a");
+    //     }
+    // }
 };
 </script>
 

@@ -1,6 +1,9 @@
 <template>
     <div class="post-detail post-detail--display">
         <router-link :to="{ name: 'post-edit', params: { id: post.id }}">Edit this post</router-link>
+        <h2 class="post-header">{{ post.title }}</h2>
+        <p> <strong>Created:</strong> {{ dateCreated }}</p>
+        <p v-if="dateCreated !== dateUpdated"><strong>Last Updated:</strong> {{ dateUpdated }}</p>
         <p>{{ post.content }}</p>
         <h3>Comments:</h3>
         <ul>

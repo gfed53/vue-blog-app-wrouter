@@ -1,10 +1,11 @@
 import Vue from "vue";
 import Router from "vue-router";
 import PostList from "./views/PostList.vue";
+import PostCreate from "./views/PostCreate.vue";
+
 import PostDetail from "./views/PostDetail.vue";
 import PostDisplay from "./views/PostDetail/PostDisplay.vue";
-import PostCreate from "./views/PostCreate.vue";
-import PostEdit from "./views/PostEdit.vue";
+import PostEdit from "./views/PostDetail/PostEdit.vue";
 
 Vue.use(Router);
 

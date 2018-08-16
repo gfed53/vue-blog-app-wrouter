@@ -1,6 +1,5 @@
 <template>
     <div class="post-create">
-        <!-- <h2>Edit this post</h2> -->
         <router-link :to="{ name: 'post-display', params: { id: post.id }}">Go Back</router-link>
         <PostForm v-bind:onSubmit="submit" v-bind:post="post"/>
     </div>
@@ -8,7 +7,7 @@
 
 <script>
 import axios from "axios";
-import PostForm from "../components/PostForm.vue";
+import PostForm from "@/components/PostForm.vue";
 
 const baseUrl = "http://localhost:8004/api/";
 
@@ -26,14 +25,14 @@ export default {
         this.getPost();
     },
     methods: {
-        // This is duplicated, found in PostDetail component. Wonder if there's a way we can reuse functions like this in different views? (probably)
+        // This is duplicated, found in PostEdit component. Wonder if there's a way we can reuse functions like this in different views? (probably)
         getPost() {
             const id = this.$route.params.id;
             axios
                 .get(baseUrl + id)
                 .then(response => {
                     this.post = response.data;
-                    console.log("this.post in postEdit section", this.post);
+                    // console.log("this.post in postEdit section", this.post);
                 })
                 .catch(error => {
                     console.log(error);
@@ -44,12 +43,12 @@ export default {
             axios
                 .put(baseUrl + this.post.id + "/", this.post)
                 .then(response => {
-                    console.log("post edit, response.data", response.data);
+                    // console.log("post edit, response.data", response.data);
 
                     // Navigate to main list view
                     // console.log("this.$router", this.$router);
                     this.$router.push({
-                        name: "post-detail",
+                        name: "post-display",
                         params: { id: response.data.id }
                     });
                 });
