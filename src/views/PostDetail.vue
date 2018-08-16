@@ -7,22 +7,13 @@
 
 <script>
 import axios from "axios";
-import moment from "moment";
 
 const baseUrl = "http://localhost:8004/api/";
 
 export default {
     name: "post-detail",
     components: {},
-    // data: function() {
-    //     return {
-    //         post: {},
-    //         comments: []
-    //     };
-    // },
-    mounted() {
-        // this.getPost();
-    },
+    mounted() {},
     methods: {
         getPost() {
             const id = this.$route.params.id;
@@ -37,14 +28,6 @@ export default {
                 });
         }
     }
-    // computed: {
-    //     dateCreated: function() {
-    //         return moment(this.post.created_at).format("MM/DD/YYYY, h:mm:ss a");
-    //     },
-    //     dateUpdated: function() {
-    //         return moment(this.post.updated_at).format("MM/DD/YYYY, h:mm:ss a");
-    //     }
-    // }
 };
 </script>
 

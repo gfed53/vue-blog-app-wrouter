@@ -1,6 +1,6 @@
 <template>
     <div class="post-create">
-        <router-link :to="{ name: 'post-display', params: { id: post.id }}">Go Back</router-link>
+        <router-link :to="{ name: 'post-display', params: { id: $route.params.id }}">Go Back</router-link>
         <ContentForm v-bind:onSubmit="submit" v-bind:data="post"/>
     </div>
 </template>
@@ -45,8 +45,6 @@ export default {
                 .then(response => {
                     // console.log("post edit, response.data", response.data);
 
-                    // Navigate to main list view
-                    // console.log("this.$router", this.$router);
                     this.$router.push({
                         name: "post-display",
                         params: { id: response.data.id }

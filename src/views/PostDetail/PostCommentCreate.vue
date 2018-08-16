@@ -1,6 +1,7 @@
 <template>
     <div class="comment-create">
-        <h2>Add a comment</h2>
+        <router-link :to="{ name: 'post-display', params: { id: $route.params.id }}">Go Back</router-link>
+        <!-- <h2>Add a comment</h2> -->
         <ContentForm v-bind:onSubmit="submit" v-bind:data="comment"/>
     </div>
 </template>
