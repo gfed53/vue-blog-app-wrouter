@@ -1,7 +1,8 @@
 <template>
     <div class="post-detail post-detail--display">
         <router-link :to="{ name: 'post-edit' }">Edit this post</router-link> | 
-        <router-link :to="{ name: 'post-comment-create' }">Add a comment</router-link>
+        <router-link :to="{ name: 'post-comment-create' }">Add a comment</router-link> | 
+        <button class="post-btn--delete" v-on:click="deletePost">Delete this post</button>
         <h2 class="post-header">{{ post.title }}</h2>
         <p> <strong>Created:</strong> {{ dateCreated }}</p>
         <p v-if="dateCreated !== dateUpdated"><strong>Last Updated:</strong> {{ dateUpdated }}</p>
@@ -47,6 +48,19 @@ export default {
                     console.log(error);
                 });
         },
+        deletePost() {
+            const id = this.$route.params.id;
+            axios
+                .delete(baseUrl + id)
+                .then(response => {
+                    console.log("delete post", response.data);
+
+                    this.$router.push({ name: "post-list" });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
         getPostComments() {
             const id = this.$route.params.id;
             axios
@@ -85,6 +99,18 @@ export default {
             font-size: 0.9em;
             margin: 0;
         }
+    }
+
+    // Making it look like a link
+    .post-btn--delete {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border: none;
+        cursor: pointer;
+        text-decoration: underline;
+        padding: 0;
+        color: #b94242;
+        font-size: 1em;
     }
 }
 </style>
