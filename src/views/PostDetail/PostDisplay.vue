@@ -7,12 +7,17 @@
         <p> <strong>Created:</strong> {{ dateCreated }}</p>
         <p v-if="dateCreated !== dateUpdated"><strong>Last Updated:</strong> {{ dateUpdated }}</p>
         <p>{{ post.content }}</p>
-        <h3>Comments:</h3>
-        <ul>
-            <li v-for="comment in comments" v-bind:key="comment.id">
-                <p>{{comment.content}}</p> 
-            </li>
-        </ul>
+        <div>
+            <h3>Comments:</h3>
+            <ul v-if="comments.length">
+                <li v-for="comment in comments" v-bind:key="comment.id">
+                    <p>{{comment.content}}</p> 
+                </li>
+            </ul>
+            <p v-else>
+                No comments yet. Add one!
+            </p>
+        </div>
     </div>
 </template>
 
