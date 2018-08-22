@@ -16,7 +16,7 @@
 import axios from "axios";
 import Post from "@/components/Post.vue";
 
-const baseUrl = "http://localhost:8004/api/";
+const baseUrl = "http://localhost:8004";
 
 export default {
     name: "post-list",
@@ -29,12 +29,19 @@ export default {
         };
     },
     mounted() {
-        this.getPosts();
+        // this.getPosts();
+        this.authorize().then(token => {
+            this.getPosts(token).then(posts => (this.posts = posts));
+        });
     },
     methods: {
-        getPosts() {
+        getPosts(token) {
             axios
-                .get(baseUrl)
+                .get(`${baseUrl}/api/`, {
+                    headers: {
+                        Authorization: `Token ${token}`
+                    }
+                })
                 .then(response => {
                     this.posts = response.data;
                     // console.log(this.posts);
@@ -42,6 +49,17 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
+        },
+        authorize() {
+            // Hard-coded user creds for now..
+            let userData = {
+                username: "greg",
+                email: "gfederico7153@gmail.com",
+                password: "test123456"
+            };
+            return axios
+                .post(`${baseUrl}/rest-auth/login/`, userData)
+                .then(res => res.data.key);
         }
     }
 };
