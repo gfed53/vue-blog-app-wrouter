@@ -29,22 +29,21 @@ export default {
         };
     },
     mounted() {
-        // this.getPosts();
+        // TODO: This can probably be cleaner..
         this.authorize().then(token => {
             this.getPosts(token).then(posts => (this.posts = posts));
         });
     },
     methods: {
         getPosts(token) {
-            axios
+            return axios
                 .get(`${baseUrl}/api/`, {
                     headers: {
                         Authorization: `Token ${token}`
                     }
                 })
                 .then(response => {
-                    this.posts = response.data;
-                    // console.log(this.posts);
+                    return response.data;
                 })
                 .catch(error => {
                     console.log(error);
@@ -69,17 +68,17 @@ export default {
 <style lang="scss">
 // Removed scoped attr because it doesn't seem to work in views the same way as with components..
 
-// h3 {
-//     margin: 40px 0 0;
-// }
+/*------------------------------------*\
+  #PostList
+\*------------------------------------*/
+
 ul {
-    list-style-type: none;
     padding: 0;
+    display: inline-block;
+    text-align: left;
+    list-style-type: none;
 }
-// li {
-//     display: inline-block;
-//     margin: 0 10px;
-// }
+
 a {
     color: #42b983;
 }

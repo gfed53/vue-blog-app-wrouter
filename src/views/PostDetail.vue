@@ -33,6 +33,8 @@ export default {
 
 
 <style lang="scss">
+@import "@/globals/settings.scss";
+
 .post-detail {
     max-width: 768px;
     margin: auto;
@@ -41,7 +43,7 @@ export default {
         border-top: 1px solid lightgray;
         border-bottom: 1px solid lightgray;
         p {
-            color: #42b983;
+            color: $vue-green;
             font-size: 0.9em;
             margin: 0;
         }

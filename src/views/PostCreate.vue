@@ -33,11 +33,11 @@ export default {
             });
         }
     }
-    // Just for testing
-    // watch: {
-    //     post: function() {
-    //         // console.log("post change", this.post);
-    //     }
-    // }
 };
 </script>
+
+<style scoped lang="scss">
+/*------------------------------------*\
+  #PostCreate
+\*------------------------------------*/
+</style>
